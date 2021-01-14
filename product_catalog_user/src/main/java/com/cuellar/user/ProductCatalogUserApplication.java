@@ -1,4 +1,4 @@
-package com.cuellar.product_catalog_user;
+package com.cuellar.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
