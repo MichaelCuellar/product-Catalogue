@@ -30,8 +30,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ResponseEntity<?> login(String basic) {
         UserBasicDto userBasic = Util.getIdUser(basic);
-        Long idUser = userBasic.getIdUser();
-        User user = iUserFacade.user(idUser);
+        User user = iUserFacade.user(userBasic.getIdUser());
         if (user != null) {
             boolean access = user.getCredentials().equals(userBasic.getCredentials());
             if (access) {
@@ -59,8 +58,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ResponseEntity<?> loginAdmin(String basic, Long tokenHeader) {
         UserBasicDto userBasic = Util.getIdUser(basic);
-        Long idUser = userBasic.getIdUser();
-        User user = iUserFacade.user(idUser);
+        User user = iUserFacade.user(userBasic.getIdUser());
         Token token = iTokenFacade.token(user);
         boolean access = token.getToken().equals(tokenHeader);
         if (access) {
