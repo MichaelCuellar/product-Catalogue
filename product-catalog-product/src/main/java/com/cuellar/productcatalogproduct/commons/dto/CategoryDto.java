@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryParentDto {
+public class CategoryDto {
 
     private Long idCategoryParent;
     private String nameCategoryParent;

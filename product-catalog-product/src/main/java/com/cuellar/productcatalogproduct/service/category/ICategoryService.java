@@ -1,15 +1,13 @@
 package com.cuellar.productcatalogproduct.service.category;
 
 
-import com.cuellar.productcatalogproduct.commons.dto.CategoryParentDto;
-import com.cuellar.productcatalogproduct.models.entity.Category;
 
+import org.springframework.http.ResponseEntity;
 
-import java.util.List;
 
 public interface ICategoryService {
 
-    List<CategoryParentDto> listCategoryParent();
+    ResponseEntity<?> listCategoryParent(int page, int size);
 
-    List<CategoryParentDto> listCategoryChildren(Long idParent);
+    ResponseEntity<?> listCategoryChildren(Long idParent,int page, int size);
 }
