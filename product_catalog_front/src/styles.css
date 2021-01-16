@@ -10,15 +10,45 @@
 
 .content{
   margin: 0;
-  font-size: 1.5rem;
+  font-size: .8rem;
   font-weight: unset;
+  padding-top: 5px;
 }
 
 .noMargin{
   margin: 0;
 }
 
+.noPadding{
+  padding: 0;
+}
 .contentImg{
   height: 10rem;
-  width: auto
+  width: auto;
+}
+
+.doc{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.box{
+  width: 300px;
+  height: 10rem;
+  background: #CCC;
+  overflow: hidden;
+}
+
+.box img{
+  width: 100%;
+  height: auto;
+}
+@supports(object-fit: cover){
+  .box img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }

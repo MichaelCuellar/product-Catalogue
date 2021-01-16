@@ -1,13 +1,20 @@
-<div class="card">
+<div style="padding-bottom: 5px">
+  <p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
+</div>
+
+<div *ngIf="category">
   <div class="p-grid">
     <div class="p-col-12">
       <p-dataView [value]="data" [paginator]="true" [rows]="size"
-                  (onPage)="changePage($event)" [totalRecords]="totalItems" [lazy]="true" [first]="first" [loading]="loading">
+                  (onPage)="changePage($event)" [totalRecords]="totalItems" [lazy]="true" [first]="first"
+                  [loading]="loading" [sortOrder]="sortOrder">
         <ng-template let-category pTemplate="listItem">
           <div class="p-col-6 p-md-6">
             <p-card header="{{category.nameCategoryParent}}" styleClass="p-card-shadow" [style]="{height: '320px'}">
-              <div class="contentImg">
-                <img alt="Card" src="{{category.photoCategoryParent}}" width="40%">
+              <div class="doc">
+                <div class="box">
+                  <img alt="Card" src="{{category.photoCategoryParent}}">
+                </div>
               </div>
               <ng-template pTemplate="footer">
                 <p-button label="Ver mas..." icon="pi pi-check" (onClick)="nextStep(category)"></p-button>
@@ -15,7 +22,58 @@
             </p-card>
           </div>
         </ng-template>
+        <ng-template pTemplate="paginatorleft" let-state>
+          <button type="button" pButton icon="pi pi-refresh" label="Atras" *ngIf="positionMenu > 0"
+                  (click)="backSection()"></button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+        </ng-template>
       </p-dataView>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="product">
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-dataView [value]="productList" [paginator]="true" [rows]="size"
+                  (onPage)="changePage($event)" [totalRecords]="totalItems" [lazy]="true" [first]="first"
+                  [loading]="loading">
+        <ng-template let-category pTemplate="listItem">
+          <div class="p-col-6 p-md-6">
+            <p-card header="{{category.name}}" styleClass="p-card-shadow" [style]="{height: '350px'}">
+              <div class="doc">
+                <div class="box">
+                  <img alt="Card" src="{{category.firstPhoto}}">
+                </div>
+              </div>
+              <div class="content">
+                <label>Precio {{category.price | currency: 'USD'}}</label>
+              </div>
+              <ng-template pTemplate="footer">
+                <p-button label="Ver mas" icon="pi pi-check" (onClick)="nextStep(category.idProduct)"></p-button>
+              </ng-template>
+            </p-card>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft" let-state>
+          <button type="button" pButton icon="pi pi-refresh" label="Atras" *ngIf="positionMenu > 0"
+                  (click)="backSection()"></button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+        </ng-template>
+      </p-dataView>
+    </div>
+  </div>
+</div>
+
+<app-product *ngIf="productSelect" [product]="responseProduct"></app-product>
+<div class="p-grid" *ngIf="productSelect">
+  <div class="p-col-12">
+    <div class="p-text-left">
+      <p-card>
+        <button type="button" pButton icon="pi pi-refresh" label="Atras" (click)="backSection()"></button>
+      </p-card>
     </div>
   </div>
 </div>

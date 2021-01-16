@@ -24,7 +24,11 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {DataViewModule} from 'primeng/dataview';
 import {CategoryService} from './api.services/category.service';
-import { CategoryComponent } from './category/category.component'
+import { CategoryComponent } from './category/category.component';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {ProductService} from './api.services/product.service';
+import { ProductComponent } from './product/product.component'
+
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import { CategoryComponent } from './category/category.component'
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CategoryComponent
+    CategoryComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +56,10 @@ import { CategoryComponent } from './category/category.component'
     ConfirmDialogModule,
     DialogModule,
     ToastModule,
-    DataViewModule
+    DataViewModule,
+    BreadcrumbModule
   ],
-  providers: [LoginService,ConfirmationService,MessageService,CategoryService],
+  providers: [LoginService,ConfirmationService,MessageService,CategoryService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,48 @@
+<div class="p-grid">
+  <div class="p-col-12 p-md-12">
+    <p-card header="{{product.name}}" styleClass="p-card-shadow" [style]="{height: '450px'}">
+      <div class="p-grid">
+        <div class="p-col-4">
+          <div class="doc">
+            <div class="box">
+              <img alt="Card" src="{{product.firstPhoto}}">
+            </div>
+          </div>
+        </div>
+        <div class="p-col-4">
+          <div class="doc">
+            <div class="box">
+              <img alt="Card" src="{{product.secondPhoto}}">
+            </div>
+          </div>
+        </div>
+        <div class="p-col-4">
+          <div class="doc">
+            <div class="box">
+              <img alt="Card" src="{{product.thirdPhoto}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-grid">
+        <div class="content p-col-12">
+          <div class="p-col-12" style="padding-left: 0">
+            <label>Descripción: {{product.description}}</label>
+          </div>
+          <div class="noPadding noMargin">
+            <label>Precio USD {{product.price | currency: 'USD'}}</label>
+          </div>
+          <div class="noPadding noMargin">
+            <label>Precio COP {{priceCOP | currency}}</label>
+          </div>
+          <div class="noPadding noMargin">
+            <label>Peso {{product.weight}}</label>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <p-button label="Ver mas" icon="pi pi-check" (onClick)="changeUSDToCOP(product.price)"></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
