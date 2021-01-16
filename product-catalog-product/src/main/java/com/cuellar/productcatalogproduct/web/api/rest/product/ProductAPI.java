@@ -17,4 +17,9 @@ public class ProductAPI {
     public ResponseEntity<?> indexProduct(@PathVariable Long id, @PathVariable int size, @PathVariable int page) {
         return iProductService.findByIdCategory(id,size,page);
     }
+
+    @GetMapping(value = "/product/{id}")
+    public ResponseEntity<?> findProduct(@PathVariable Long id) {
+        return iProductService.findProductById(id);
+    }
 }

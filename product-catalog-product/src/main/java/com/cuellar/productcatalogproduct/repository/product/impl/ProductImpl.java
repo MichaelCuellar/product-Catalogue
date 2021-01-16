@@ -24,4 +24,9 @@ public class ProductImpl implements IProductFacade {
     public Page<Product> findProductByCategory(Long idCategory, Pageable pageable) {
         return iProductRepository.findProductByCategory(idCategory,pageable);
     }
+
+    @Override
+    public Product findById(Long idProduct) {
+        return iProductRepository.findById(idProduct).orElse(new Product());
+    }
 }

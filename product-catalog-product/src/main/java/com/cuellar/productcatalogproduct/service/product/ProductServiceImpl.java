@@ -2,7 +2,6 @@ package com.cuellar.productcatalogproduct.service.product;
 
 import com.cuellar.productcatalogproduct.commons.dto.ProductDto;
 import com.cuellar.productcatalogproduct.commons.response.ProductResponseDto;
-import com.cuellar.productcatalogproduct.models.entity.Category;
 import com.cuellar.productcatalogproduct.models.entity.Product;
 import com.cuellar.productcatalogproduct.repository.product.impl.IProductFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +32,12 @@ public class ProductServiceImpl implements IProductService {
         response.setDtoList(productListTmp);
         response.setTotalItems(productsList.getTotalElements());
         response.setTotalPages(productsList.getTotalPages());
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<?> findProductById(Long idProduct) {
+        ProductDto response = changeProduct(iProductFacade.findById(idProduct));
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 

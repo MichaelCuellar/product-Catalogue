@@ -9,4 +9,5 @@ public interface IProductFacade {
 
     boolean addProduct(Product product);
     Page<Product> findProductByCategory(Long idCategory, Pageable pageable);
+    Product findById(Long idProduct);
 }
