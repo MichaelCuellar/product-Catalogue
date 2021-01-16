@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
     const encodedSer = btoa(user);
     this.apiService.getLogin(encodedSer).subscribe( value => {
       console.log(value);
-      //if (value){
-      //  this.route.navigate(['home']).then(r => {
-        //  sessionStorage.basic = encodedSer;
-        //});
-      //}
+      if (value){
+       this.route.navigate(['home']).then( () => {
+          sessionStorage.basic = encodedSer;
+        });
+      }
     });
   }
 }

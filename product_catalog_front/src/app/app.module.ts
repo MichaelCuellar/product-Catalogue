@@ -10,13 +10,10 @@ import {PanelModule} from 'primeng/panel';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule } from '@angular/common/http';
 import { LoginService } from './api.services/login.service';
-import { BookComponent } from './book/book.component';
 import { LoginComponent } from './login/login.component';
 import {TableModule} from 'primeng/table';
 import {CardModule} from 'primeng/card';
 import {InputNumberModule} from 'primeng/inputnumber';
-import { SaleComponent } from './sale/sale.component';
-import { CarShopServiceService } from './api.services/car-shop-service.service';
 import { HomeComponent } from './home/home.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
@@ -25,15 +22,17 @@ import {ConfirmationService} from 'primeng/api';
 import {DialogModule} from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {DataViewModule} from 'primeng/dataview';
+import {CategoryService} from './api.services/category.service';
+import { CategoryComponent } from './category/category.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
     LoginComponent,
-    SaleComponent,
-    HomeComponent
+    HomeComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +50,10 @@ import {MessageService} from 'primeng/api';
     MessageModule,
     ConfirmDialogModule,
     DialogModule,
-    ToastModule
+    ToastModule,
+    DataViewModule
   ],
-  providers: [LoginService,CarShopServiceService,ConfirmationService,MessageService],
+  providers: [LoginService,ConfirmationService,MessageService,CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

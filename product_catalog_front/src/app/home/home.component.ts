@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {LoginService} from "../api.services/login.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -12,23 +12,25 @@ export class HomeComponent implements OnInit {
   boutique = true;
   display = false;
 
-  constructor(private route: Router) { }
+
+  constructor(private route: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  shoppingCart(): void{
+
+  shoppingCart(): void {
     this.boutique = false;
   }
 
-  backPages($event: any): void{
-    this.boutique = true;
-    this.display = true;
-  }
-
   closeSession(): void {
-    this.route.navigate(['']).then(r => {
+    this.route.navigate(['']).then( () => {
       sessionStorage.clear();
     });
+  }
+
+  changePage($event: any): void {
+    console.log($event);
   }
 }

@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-dataView [value]="data" [paginator]="true" [rows]="size" (onPage)="changePage($event)" [totalRecords]="totalItems" [lazy]="true">
+        <ng-template let-category pTemplate="listItem">
+          <div class="p-col-6 p-md-6">
+            <p-card header="{{category.nameCategoryParent}}" styleClass="p-card-shadow" [style]="{height: '320px'}">
+              <div class="contentImg">
+                <img alt="Card" src="{{category.photoCategoryParent}}" width="40%">
+              </div>
+              <ng-template pTemplate="footer">
+                <p-button label="Ver mas..." icon="pi pi-check"></p-button>
+              </ng-template>
+            </p-card>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+  </div>
+</div>

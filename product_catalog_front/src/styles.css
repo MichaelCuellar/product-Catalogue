@@ -17,3 +17,8 @@
 .noMargin{
   margin: 0;
 }
+
+.contentImg{
+  height: 10rem;
+  width: auto
+}
