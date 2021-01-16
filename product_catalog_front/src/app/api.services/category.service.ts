@@ -16,4 +16,8 @@ export class CategoryService {
   getParentCategory(size: number, page: number): Observable<any> {
     return this.http.get(`${this.url}/parent/${size}/${page}`);
   }
+
+  getChildrenCategory(size: number, page: number, idCategory: number): Observable<any> {
+    return this.http.get(`${this.url}/children/${idCategory}/${size}/${page}`);
+  }
 }
