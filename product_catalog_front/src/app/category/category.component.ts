@@ -131,7 +131,6 @@ export class CategoryComponent implements OnInit {
         this.productSelect = true;
         this.category = false;
         this.product = false;
-        console.log(value.name + 'Soy un producto');
       });
     }
   }

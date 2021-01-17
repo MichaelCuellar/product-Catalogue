@@ -27,7 +27,8 @@ import {CategoryService} from './api.services/category.service';
 import { CategoryComponent } from './category/category.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {ProductService} from './api.services/product.service';
-import { ProductComponent } from './product/product.component'
+import { ProductComponent } from './product/product.component';
+import { SaleComponent } from './sale/sale.component'
 
 
 
@@ -37,7 +38,8 @@ import { ProductComponent } from './product/product.component'
     LoginComponent,
     HomeComponent,
     CategoryComponent,
-    ProductComponent
+    ProductComponent,
+    SaleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,55 @@
 <div class="p-grid">
-  <p-panel header="Tienda Online">
-    <div class="p-col-12">
+  <div class="p-col-3 p-offset-5">
+    <p-panel header="Tienda Online">
+      <div class="p-col-12">
       <span class="p-float-label">
         <input id="user" type="text" pInputText [(ngModel)]="userID" min="0">
         <label for="user">Usuario</label>
       </span>
-    </div>
-    <div class="p-col-12" style="padding-top: 13px">
+      </div>
+      <div class="p-col-12" style="padding-top: 13px">
       <span class="p-float-label">
         <input id="password" type="password" pInputText [(ngModel)]="password">
         <label for="password">Contraseña</label>
       </span>
-    </div>
-    <p-footer>
-      <p-button label="Entrar" (click)="login()"></p-button>
-    </p-footer>
-  </p-panel>
+      </div>
+      <p-footer>
+        <div class="p-grid">
+          <div class="p-col-3 p-offset-3">
+            <p-button label="Entrar" (click)="login()"></p-button>
+          </div>
+        </div>
+      </p-footer>
+    </p-panel>
+  </div>
 </div>
+
+<p-dialog [modal]="true" [(visible)]="isAdmin" [style]="{width: '45vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false" [closable]="false">
+  <div class="p-grid">
+    <div class="p-col-7 p-offset-3">
+      <p-panel header="Bienvenido administrador">
+        <div class="p-col-12">
+          <label class="contentInfo" for="userAdmin">Por favor ingrese el codigo de seguridad enviado a su
+            correo.</label>
+          <input id="userAdmin" type="text" pInputText [(ngModel)]="userAdmin" min="0" disabled style="margin-top: 5px">
+        </div>
+        <div class="p-col-12" style="padding-top: 13px">
+      <span class="p-float-label">
+        <input id="code" type="password" pInputText [(ngModel)]="passwordAdmin">
+        <label for="code">Codigo de seguridad</label>
+      </span>
+        </div>
+        <p-footer>
+          <div class="p-grid">
+            <div class="p-col-3 p-offset-3">
+              <p-button label="Entrar" (click)="loginAdmin()"></p-button>
+            </div>
+          </div>
+        </p-footer>
+      </p-panel>
+    </div>
+  </div>
+</p-dialog>
+
+<p-toast></p-toast>

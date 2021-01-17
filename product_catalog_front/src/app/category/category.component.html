@@ -38,7 +38,7 @@
     <div class="p-col-12">
       <p-dataView [value]="productList" [paginator]="true" [rows]="size"
                   (onPage)="changePage($event)" [totalRecords]="totalItems" [lazy]="true" [first]="first"
-                  [loading]="loading">
+                  [loading]="loading" emptyMessage="No tenemos productos">
         <ng-template let-category pTemplate="listItem">
           <div class="p-col-6 p-md-6">
             <p-card header="{{category.name}}" styleClass="p-card-shadow" [style]="{height: '350px'}">
