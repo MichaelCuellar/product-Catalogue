@@ -2,6 +2,7 @@ package com.cuellar.productcatalogproduct.service.product;
 
 import com.cuellar.productcatalogproduct.commons.dto.ProductDto;
 import com.cuellar.productcatalogproduct.commons.response.ProductResponseDto;
+import com.cuellar.productcatalogproduct.commons.util.Util;
 import com.cuellar.productcatalogproduct.models.entity.Product;
 import com.cuellar.productcatalogproduct.repository.product.impl.IProductFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ProductServiceImpl implements IProductService {
         Page<Product> productsList = iProductFacade.findProductByCategory(idCategory, PageRequest.of(page, size));
         List<ProductDto> productListTmp = new ArrayList<>();
         for (Product productDto : productsList) {
-            productListTmp.add(changeProduct(productDto));
+            productListTmp.add(Util.changeProduct(productDto));
         }
         ProductResponseDto response = new ProductResponseDto();
         response.setDtoList(productListTmp);
@@ -37,20 +38,8 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public ResponseEntity<?> findProductById(Long idProduct) {
-        ProductDto response = changeProduct(iProductFacade.findById(idProduct));
+        ProductDto response = Util.changeProduct(iProductFacade.findById(idProduct));
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
-    public ProductDto changeProduct(Product product){
-        ProductDto responseDto = new ProductDto();
-        responseDto.setIdProduct(product.getIdProduct());
-        responseDto.setName(product.getName());
-        responseDto.setDescription(product.getDescription());
-        responseDto.setPrice(product.getPrice());
-        responseDto.setWeight(product.getWeight());
-        responseDto.setFirstPhoto(product.getFirstPhoto());
-        responseDto.setSecondPhoto(product.getSecondPhoto());
-        responseDto.setThirdPhoto(product.getThirdPhoto());
-        return responseDto;
-    }
 }
