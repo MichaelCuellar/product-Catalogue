@@ -4,6 +4,7 @@ import com.cuellar.user.models.entity.Token;
 import com.cuellar.user.models.entity.User;
 import com.cuellar.user.repository.token.ITokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ public class TokenImpl implements ITokenFacade{
 
 
     @Override
+    @Async
     public void save(Token token) {
          iTokenRepository.save(token);
     }

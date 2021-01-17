@@ -41,7 +41,8 @@ public class UserServiceImpl implements IUserService {
                     token.setToken(randomNumber);
                     token.setUser(user);
                     token.setCalendar(Calendar.getInstance());
-                    login.setStatus(iSendEmail.sendEmail(randomNumber, user.getEmail()));
+                    login.setStatus(true);
+                    iSendEmail.sendEmail(randomNumber, user.getEmail());
                     iTokenFacade.save(token);
                 }
                 return new ResponseEntity<>(login, HttpStatus.OK);
