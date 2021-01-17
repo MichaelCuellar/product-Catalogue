@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
 
   shoppingCart(): void {
-    this.boutique = false;
+    this.boutique = !this.boutique;
   }
 
   closeSession(): void {

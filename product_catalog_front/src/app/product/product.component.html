@@ -41,8 +41,20 @@
         </div>
       </div>
       <ng-template pTemplate="footer">
-        <p-button label="Ver mas" icon="pi pi-check" (onClick)="changeUSDToCOP(product.price)"></p-button>
+        <div class="p-grid">
+          <div class="p-col-4">
+            <p-button label="Añadir al carrito" icon="pi pi-check" (onClick)="addCarShop()"></p-button>
+          </div>
+          <div class="p-col-4">
+            <span class="p-float-label">
+              <input id="user" type="text" pInputText [(ngModel)]="quantity" min="1">
+              <label for="user">Cantidad</label>
+            </span>
+          </div>
+        </div>
       </ng-template>
     </p-card>
   </div>
 </div>
+
+<p-toast></p-toast>

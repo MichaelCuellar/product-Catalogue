@@ -29,7 +29,7 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {ProductService} from './api.services/product.service';
 import { ProductComponent } from './product/product.component';
 import { SaleComponent } from './sale/sale.component'
-
+import {CarShopService} from './api.services/car-shop.service';
 
 
 @NgModule({
@@ -61,7 +61,7 @@ import { SaleComponent } from './sale/sale.component'
     DataViewModule,
     BreadcrumbModule
   ],
-  providers: [LoginService,ConfirmationService,MessageService,CategoryService,ProductService],
+  providers: [LoginService,ConfirmationService,MessageService,CategoryService,ProductService,CarShopService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

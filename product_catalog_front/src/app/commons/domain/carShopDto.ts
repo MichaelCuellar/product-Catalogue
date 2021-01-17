@@ -1,8 +1,7 @@
-import {BookDto} from './bookDto';
+import {ProductDTO} from './productDTO';
 
 export class CarShopDto{
   quantity: number;
-  book: BookDto;
-  idDetailCarShop: number;
+  productDto: ProductDTO;
   idCarShop: number;
 }

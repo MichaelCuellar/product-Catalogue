@@ -1,5 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from '../api.services/product.service';
+import {CarShopService} from '../api.services/car-shop.service';
+import {ProductDTO} from '../commons/domain/productDTO';
+import {MessageService} from 'primeng/api';
+import {SaleProductDto} from '../commons/domain/saleProductDto';
 
 @Component({
   selector: 'app-product',
@@ -8,10 +12,13 @@ import {ProductService} from '../api.services/product.service';
 })
 export class ProductComponent implements OnInit {
 
-  @Input() product: any;
+  @Input() product: ProductDTO;
   priceCOP: number;
+  quantity: any;
 
-  constructor(private apiProduct: ProductService) { }
+  constructor(private apiProduct: ProductService, private apiCarShop: CarShopService,
+              private messageService: MessageService) {
+  }
 
   ngOnInit(): void {
     this.apiProduct.getExchangeRate().subscribe(value => {
@@ -19,10 +26,21 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  changeUSDToCOP(price: number): void{
-    this.apiProduct.getExchangeRate().subscribe(value => {
-      this.priceCOP = price * value.quotes.USDCOP;
-      console.log(this.priceCOP);
-    });
+  addCarShop(): void {
+    // tslint:disable-next-line:triple-equals
+    if (this.quantity == 0 || this.quantity == '' || this.quantity == null) {
+      this.messageService.add({severity: 'info', summary: 'Info', detail: 'Agregue una cantidad válida o mayor a 0'});
+    } else {
+      const selectProduct: SaleProductDto = new SaleProductDto();
+      selectProduct.idProduct = this.product.idProduct;
+      selectProduct.quantity = this.quantity;
+      this.apiCarShop.addCarShop(sessionStorage.basic, selectProduct).subscribe(() => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Info',
+          detail: 'Su orden se ha agregado y/o actualizado en el carrito'
+        });
+      });
+    }
   }
 }

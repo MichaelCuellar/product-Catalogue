@@ -4,7 +4,7 @@
       <label class="title">Catalogo de productos - Tienda Online</label>
     </div>
     <div class="p-col-2 p-text-right">
-      <p-button label="Cerrar sesion" (click)="closeSession()" *ngIf="boutique"></p-button>
+      <p-button label="Cerrar sesion" (click)="closeSession()"></p-button>
     </div>
     <div class="p-col-12">
       <hr>
@@ -15,11 +15,13 @@
     </div>
     <div class="p-col-3">
       <p-button label="Ir al carrito de compras" (click)="shoppingCart()" *ngIf="boutique"></p-button>
+      <p-button label="Ir al catalogo de productos" (click)="shoppingCart()" *ngIf="!boutique"></p-button>
     </div>
   </div>
 </div>
 
 <app-category *ngIf="boutique"></app-category>
+<app-sale *ngIf="!boutique"></app-sale>
 
 <p-dialog header="Informacion" [(visible)]="display" [modal]="true">
   <label class="subTitle">Hemos recibido su solicitud y será procesada por nuestras agentes. Gracias por su
